@@ -1,3 +1,4 @@
+package gui;
 
 public interface Question_Interface {
  public int setResult();

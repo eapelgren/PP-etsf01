@@ -1,3 +1,4 @@
+package gui;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
