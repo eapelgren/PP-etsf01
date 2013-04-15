@@ -8,10 +8,12 @@ import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JList;
 
+import poker.Question;
+
 
 public class GamePane extends JPanel {
-	private JTextField textField;
-
+	private JTextField questionDescriptionTF;
+	private JLabel questionLabel;
 	/**
 	 * Create the panel.
 	 */
@@ -22,14 +24,14 @@ public class GamePane extends JPanel {
 		lblNewJgoodiesLabel.setBounds(10, 11, 143, 25);
 		add(lblNewJgoodiesLabel);
 		
-		JLabel lblNewJgoodiesLabel_1 = DefaultComponentFactory.getInstance().createLabel("Beskrvining av Fr\u00E5ga");
-		lblNewJgoodiesLabel_1.setBounds(54, 47, 154, 39);
-		add(lblNewJgoodiesLabel_1);
+		questionLabel = DefaultComponentFactory.getInstance().createLabel("Beskrvining av Fr\u00E5ga");
+		questionLabel.setBounds(54, 47, 154, 39);
+		add(questionLabel);
 		
-		textField = new JTextField();
-		textField.setBounds(54, 97, 241, 220);
-		add(textField);
-		textField.setColumns(10);
+		questionDescriptionTF = new JTextField();
+		questionDescriptionTF.setBounds(54, 97, 241, 220);
+		add(questionDescriptionTF);
+		questionDescriptionTF.setColumns(10);
 		
 		JButton btnNewButton = new JButton("1");
 		btnNewButton.setBounds(54, 395, 49, 39);
@@ -68,6 +70,7 @@ public class GamePane extends JPanel {
 		add(button_7);
 		
 		JButton button_8 = new JButton("89");
+		button_8.setEnabled(false);
 		button_8.setBounds(246, 435, 49, 39);
 		add(button_8);
 		
@@ -83,5 +86,11 @@ public class GamePane extends JPanel {
 		btnNewButton_1.setBounds(341, 351, 104, 23);
 		add(btnNewButton_1);
 
+	}
+	
+	
+	public void loadQuestion(Question question){
+		questionLabel.setText(question.question);
+		questionDescriptionTF.setText(question.questionDescription);
 	}
 }

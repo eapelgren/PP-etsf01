@@ -14,24 +14,11 @@ public class Frame extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JTabbedPane tabbedPane;
-	private GamePane gamePane;
-	private ResultPane resultPane;
-	private LoginPane loginPane;
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Frame frame = new Frame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	public GamePane gamePane;
+	public ResultPane resultPane;
+	public LoginPane loginPane;
+
+
 
 	/**
 	 * Create the frame.
@@ -64,10 +51,10 @@ public class Frame extends JFrame implements ActionListener {
 		
 		tabbedPane.setSelectedIndex(0);
 	
-	}
+//	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
+//	@Override
+	//public void actionPerformed(ActionEvent e) {
 		tabbedPane.removeTabAt(0);
 		
 		tabbedPane.addTab("GamePane", null, gamePane,

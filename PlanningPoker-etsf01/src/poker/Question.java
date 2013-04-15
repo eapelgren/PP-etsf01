@@ -1,0 +1,15 @@
+package poker;
+
+public class Question {
+	public String question;
+	public String questionDescription;
+
+
+public Question(String question, String questionDescription){
+	this.question = question;
+	this.questionDescription = questionDescription;
+}
+
+
+}
+
