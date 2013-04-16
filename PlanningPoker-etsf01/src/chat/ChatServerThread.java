@@ -28,7 +28,6 @@ public class ChatServerThread extends Thread {
 	public void run() {
 
 		while (true) {
-
 			try {
 				String message = fromClient.readLine();
 				if (message != null) {
