@@ -12,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 
 public class Frame extends JFrame implements ActionListener {
 
+	private String test;
 	private JPanel contentPane;
 	private JTabbedPane tabbedPane;
 	public GamePane gamePane;
