@@ -10,12 +10,13 @@ import java.net.UnknownHostException;
 public class ChatClient {
 	private String userName;
 	private Socket socket;
-	private OutputStream outStream; 
-	private BufferedReader inStream;
+	private OutputStream outStream;//skickar till server 
+	private BufferedReader inStream;//data från server
 	
 	public ChatClient(String userName)
 	{
-		this.userName = userName; 
+		this.userName = userName;
+		
 	}
 	
 	public void connectToServer(String ipAddress) throws UnknownHostException, IOException
