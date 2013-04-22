@@ -44,6 +44,10 @@ public class LoginPane extends JPanel {
 		JButton btnLogin = new JButton("Login");
 		add(btnLogin);
 		btnLogin.setBounds(10, 175, 89, 23);
+		
+		JButton btnSkapaNyttSpel = new JButton("Skapa nytt spel");
+		btnSkapaNyttSpel.setBounds(166, 175, 126, 23);
+		add(btnSkapaNyttSpel);
 		btnLogin.addMouseListener(new MouseAdapter() {
 		@Override
 		public void mouseClicked(MouseEvent arg0) {
