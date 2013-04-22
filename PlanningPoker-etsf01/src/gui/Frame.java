@@ -68,6 +68,7 @@ public class Frame extends JFrame implements ActionListener {
 				try{
 					Frame frame = new Frame();
 					frame.setVisible(true);
+					
 				}catch (Exception e){
 					e.printStackTrace();
 				}
@@ -76,7 +77,7 @@ public class Frame extends JFrame implements ActionListener {
 	}
 
 //	@Override
-	public void actionPerformed(ActionEvent e) {
+	//public void actionPerformed(ActionEvent e) {
 	//	tabbedPane.removeTabAt(0);
 		
 	//	tabbedPane.addTab("GamePane", null, gamePane,
@@ -85,7 +86,7 @@ public class Frame extends JFrame implements ActionListener {
 	//	tabbedPane.addTab("ResultPane", null, resultPane,
 		//		"ResultPane");
 		
-	}
+	//}
 
 
 
