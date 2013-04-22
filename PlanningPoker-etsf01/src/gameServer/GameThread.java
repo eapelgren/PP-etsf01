@@ -1,4 +1,4 @@
-package server;
+package gameServer;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -135,11 +135,13 @@ public class GameThread extends Thread {
 		server.AddNewQuestion(iv[0], iv[1]);
 	}
 	
+	// StartGame
 	private void startGame()
 	{
 		server.StartGame();
 	}
 	
+	// SetupGame
 	private void setupGame()
 	{
 		server.SetupGame();

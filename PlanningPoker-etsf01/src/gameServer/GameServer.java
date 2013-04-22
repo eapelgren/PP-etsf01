@@ -1,4 +1,4 @@
-package server;
+package gameServer;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -29,7 +29,7 @@ public class GameServer {
 		gameClients = new ArrayList<GameThread>();
 	}
 	
-	// Låter anändare ansluta sin klient till spelet
+	// Allows other users connect to the game
 	public void SetupGame()
 	{
 		while (!gameStarted) {
@@ -45,13 +45,15 @@ public class GameServer {
 		}
 	}
 	
-	// Sätter igång spelet
+	// Starts the game
 	public void StartGame()
 	{
 		gameStarted = true;
 		ContinueGame();
 	}
 	
+	// Gives the next question in the game, 
+	// if there is one, if not it ends the game
 	public void ContinueGame()
 	{
 		if(!gameQuestions.isEmpty()){
