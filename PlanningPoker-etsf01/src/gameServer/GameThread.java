@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import poker.Card;
 import poker.Question;
 import poker.QuestionPlayed;
+import poker.User;
 import poker.UserCard;
-import user.User;
 
 public class GameThread extends Thread {
 	
@@ -52,12 +52,12 @@ public class GameThread extends Thread {
 	public void SendResultOnQuestion(ArrayList<UserCard> playedCards)
 	{
 		StringBuilder sb = new StringBuilder();
-		sb.append("Answer:");
+		sb.append("Answer: ");
 		for(UserCard uCard : playedCards)
 		{
-			sb.append(" Spelare ");
+			sb.append("Player ");
 			sb.append(uCard.getUser().getName());
-			sb.append(" Valde kort ");
+			sb.append(" chose the card ");
 			sb.append(uCard.getCard().getValue());
 			sb.append("\r\n");
 		}
@@ -75,7 +75,7 @@ public class GameThread extends Thread {
 		sb.append("AllQuestions:");
 		for(QuestionPlayed qp: al)
 		{
-			sb.append("Resultatet på frågan ");
+			sb.append("Result on the question: ");
 			sb.append(qp.getQuestion().getQuestion());
 			sb.append(" - ");
 			sb.append(qp.getCard().getValue());
@@ -115,6 +115,8 @@ public class GameThread extends Thread {
 			startGame();
 		}else if(command[0].equals("SetupGame")){
 			setupGame();
+		}else if(command[0].equals("ContinueGame")){
+			continueGame();
 		}
 	}
 	
@@ -149,5 +151,10 @@ public class GameThread extends Thread {
 	private void setupGame()
 	{
 		server.SetupGame();
+	}
+	
+	private void continueGame()
+	{
+		server.ContinueGame();
 	}
 }

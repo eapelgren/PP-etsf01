@@ -93,5 +93,5 @@ public class GamePane extends JPanel {
 		questionLabel.setText(question.question);
 		questionDescriptionTF.setText(question.questionDescription);
 	}
-	public void addQuestion
+
 }

@@ -87,7 +87,6 @@ public class GameServer {
 		if(playedCards.size() == gameClients.size())
 		{
 			compareResultsForQuestion();
-			ContinueGame();
 		}
 	}
 	

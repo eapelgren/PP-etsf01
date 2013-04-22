@@ -1,4 +1,5 @@
 package gui;
+import game.ProgramHandler;
 import gameClient.GameClient;
 
 import javax.swing.JPanel;
@@ -18,19 +19,19 @@ public class LoginPane extends JPanel {
 	public String ip;
 	private JEditorPane editorPaneName; 
 	private JEditorPane editorPaneIp;
-	private GameClient gameClient;
+	private ProgramHandler pHandler;
+	
 	/**
 	 * Create the panel.
 	 */
-	public LoginPane(GameClient client, FrameHandler handler) {
+	public LoginPane(FrameHandler handler, ProgramHandler pHandler) {
 		setLayout(null);
 		this.frameHandler = handler;
+		this.pHandler = pHandler;
 		JLabel lblLogin = DefaultComponentFactory.getInstance().createLabel("Login");
 		lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblLogin.setBounds(10, 11, 120, 41);
 		add(lblLogin);
-		
-		this.gameClient = client;
 		
 		this.editorPaneName = new JEditorPane();
 		editorPaneName.setBounds(101, 63, 154, 20);
@@ -66,15 +67,14 @@ public class LoginPane extends JPanel {
 		add(btnSkapaNyttSpel);
 		
 		btnLogin.addMouseListener(new MouseAdapter() {
+			
 		@Override
 		public void mouseClicked(MouseEvent arg0) {
 			name = editorPaneName.getText();
 			ip = editorPaneIp.getText();
-			if(true){
-				
-				
-			}
-			if(isConnected()){
+			if(name != null && !name.equals("") && ip != null && !ip.equals(""))
+			{
+				continueProgram(name, ip);
 			}
 		}
 		});
@@ -82,6 +82,12 @@ public class LoginPane extends JPanel {
 		
 		
 	}
+	
+	private void continueProgram(String userName, String ip)
+	{
+		pHandler.connectToGame(userName, ip);
+	}
+	
 	public boolean isConnected(){
 		return true;
 		

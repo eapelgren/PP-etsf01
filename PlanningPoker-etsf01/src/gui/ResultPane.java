@@ -121,7 +121,15 @@ public class ResultPane extends JPanel {
 		btnSpelaOm.setEnabled(false);
 		btnSpelaOm.setBounds(260, 387, 89, 23);
 		add(btnSpelaOm);
+	}
+	
+	public void setResultOfLastQuestion(String result)
+	{
 		
-
+	}
+	
+	public void setResultOfGameSoFar(String result)
+	{
+		
 	}
 }

@@ -1,4 +1,6 @@
 package gui;
+import game.ProgramHandler;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -10,7 +12,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
 
 
-public class Frame extends JFrame implements ActionListener {
+public class LoginFrame extends JFrame implements ActionListener {
 
 	//private String test;
 	private JPanel contentPane;
@@ -25,7 +27,7 @@ public class Frame extends JFrame implements ActionListener {
 	/**
 	 * Create the frame.
 	 */
-	public Frame(){
+	public LoginFrame(FrameHandler handler, ProgramHandler pHandler){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -38,7 +40,7 @@ public class Frame extends JFrame implements ActionListener {
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
 		
-		loginPane = new LoginPane();
+		loginPane = new LoginPane(handler, pHandler);
 		
 		//gamePane = new GamePane();
 
@@ -66,7 +68,7 @@ public class Frame extends JFrame implements ActionListener {
 		EventQueue.invokeLater(new Runnable(){
 			public void run(){
 				try{
-					Frame frame = new Frame();
+					LoginFrame frame = new LoginFrame(null, null);
 					frame.setVisible(true);
 					
 				}catch (Exception e){

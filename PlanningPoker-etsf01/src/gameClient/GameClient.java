@@ -6,23 +6,29 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Observable;
 
 import poker.Card;
 import poker.Question;
 
 import chat.ChatServer;
 
-public class GameClient {
+public class GameClient extends Observable {
 	private String userName;
 	private Socket socket;
 	private OutputStream toServer; 
 	private BufferedReader fromServer;
+	private Question lastQuestion;
+	private String answerOnLastQuestion;
+	private String allQuestionsAndAnswers;
 	
 	public GameClient(String userName, String connectToAddress)
 	{
 		this.userName = userName; 
 		try {
 			connectToServer(connectToAddress);
+			Thread reciverThread = new GameClientThread(fromServer, this);
+			reciverThread.start();
 		} catch (UnknownHostException e) {
 			System.out.println("Fel serveraddress");
 		} catch (IOException e) {
@@ -37,50 +43,38 @@ public class GameClient {
 		fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 	}
 	
-	//Question: question 
-	//Description: description
-	public Question GetQuestionFromServer()
+	public void setNewQuestion(Question question)
 	{
-		Question question = null;
-		try {
-			String firstString = fromServer.readLine(); 
-			String secondString = fromServer.readLine();
-			if(firstString.startsWith("Question"))
-			{
-				firstString = firstString.substring("Question: ".length());
-			}
-			if(secondString.startsWith("Description"))
-			{
-				secondString = secondString.substring("Description: ".length());
-			}
-			question = new Question(firstString, secondString);
-				
-		} catch (IOException e) {
-			System.out.println("Problem med att ta emot fråga");
-		} 
-		return question;
+		lastQuestion = question;
+		setChanged();
+		notifyObservers(question);
+	}
+	public String getAnswerOnLastQuestion()
+	{
+		return answerOnLastQuestion;
 	}
 	
-	public String GetResultOnQusetion()
+	
+	public Question getLastAskedQuestion()
 	{
-		try {
-			String resultString = fromServer.readLine();
-			return resultString.substring("Answer: ".length());
-		} catch (IOException e) {
-			System.out.println("Problem med att ta emot resultat för seplad runda");
-			return null; 
-		} 
+		return lastQuestion;
+	}
+	public void setAnswerOnQuestion(String answer)
+	{
+		answerOnLastQuestion = answer;
+		setChanged();
+		notifyObservers(answer);
 	}
 	
-	public String GetAllQuestionsAndResults()
+	public void setAllQuestionsAndAnswers(String questionsAndAnswers)
 	{
-		try {
-			String resultString = fromServer.readLine();
-			return resultString.substring("AllQuestions: ".length());
-		} catch (IOException e) {
-			System.out.println("Problem med att ta emot alla frågor och resultat");
-			return null; 
-		} 
+		allQuestionsAndAnswers = questionsAndAnswers;
+		setChanged();
+		notifyObservers(questionsAndAnswers);
+	}
+	public String getAllQuestionsAndAnswers()
+	{
+		return allQuestionsAndAnswers;
 	}
 	
 	public void StartNewGame()
@@ -103,7 +97,6 @@ public class GameClient {
 		}
 	}
 	
-	//NewQuestion: Question : Description
 	public void AddNewQuestion(String question, String description)
 	{
 		StringBuilder sb = new StringBuilder();
@@ -121,7 +114,6 @@ public class GameClient {
 		
 	}
 	
-	// ChoosenCard: User - CardValue
 	public void ChooseCard(Card card)
 	{
 		StringBuilder sb = new StringBuilder();
@@ -137,6 +129,16 @@ public class GameClient {
 			System.out.println("Could not send choosen card o server");
 		}
 		
+	}
+	
+	public void PlayNextQuestion()
+	{
+		try {
+			toServer.write("ContinueGame".getBytes());
+			toServer.flush();
+		} catch (IOException e) {
+			System.out.println("Could not send command 'StartGame'");
+		}
 	}
 	
 	

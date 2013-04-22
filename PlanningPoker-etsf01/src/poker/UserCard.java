@@ -1,6 +1,5 @@
 package poker;
 
-import user.User;
 
 public class UserCard{
 	private Card card; 

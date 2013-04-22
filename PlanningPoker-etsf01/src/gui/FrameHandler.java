@@ -1,14 +1,13 @@
 package gui;
 
 public class FrameHandler {
-	public Frame frame;
-	public Frame2 frame2;
-	public Frame3 frame3;
-	public FrameHandler(){
-		this.frame = new Frame();
-		this.frame2 = new Frame2();
-		this.frame3 = new Frame3();
+	public LoginFrame frame;
+	public NewQuestionFrame frame2;
+	public GameFrame frame3;
+	public FrameHandler(LoginFrame login, NewQuestionFrame question, GameFrame game){
+		frame = login; 
+		frame2 = question; 
+		frame3 = game; 
 	}
-	
 	
 }

@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
 
-public class Frame3 extends JFrame {
+public class GameFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JTabbedPane tabbedPane;
@@ -22,7 +22,7 @@ public class Frame3 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Frame3 frame = new Frame3();
+					GameFrame frame = new GameFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +34,7 @@ public class Frame3 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Frame3() {
+	public GameFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -54,6 +54,16 @@ public class Frame3 extends JFrame {
 				"GamePane");
 		tabbedPane.addTab("ResultPane", null, resultPane,
 				"ResultPane");
+	}
+	
+	public ResultPane getResultPane()
+	{
+		return resultPane;
+	}
+	
+	public GamePane getGamePane()
+	{
+		return gamePane; 
 	}
 
 }
