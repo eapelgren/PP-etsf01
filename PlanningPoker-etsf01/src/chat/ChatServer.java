@@ -21,7 +21,6 @@ public class ChatServer {
 	private void runServer() {
 		while (true) {
 			try {
-				System.out.println("Server startar");
 				Socket connection = socket.accept();
 				ChatServerThread chatThread = new ChatServerThread(connection,
 						this);
