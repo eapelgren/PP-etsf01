@@ -6,6 +6,11 @@ public class Card implements Card_Interface {
 	public Card(int value){
 		this.value=value;
 	}
+	
+	public Card(String value)
+	{
+		this.value = Integer.parseInt(value);
+	}
 
 	@Override
 	public int getValue() {

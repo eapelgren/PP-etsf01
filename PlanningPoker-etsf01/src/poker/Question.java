@@ -10,6 +10,15 @@ public Question(String question, String questionDescription){
 	this.questionDescription = questionDescription;
 }
 
+	public String getQuestion()
+	{
+		return question;
+	}
+	
+	public String getDescription()
+	{
+		return questionDescription;
+	}
 
 }
 
