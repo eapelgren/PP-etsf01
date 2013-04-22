@@ -1,6 +1,9 @@
 package game;
 
+import java.io.IOException;
+
 import gameClient.GameClient;
+import gameServer.GameServer;
 import gui.FrameHandler;
 import gui.GameFrame;
 import gui.LoginFrame;
@@ -11,9 +14,15 @@ public class ProgramHandler {
 	private FrameHandler fHandler;
 	private GameClient gameClient;
 	
+	public ProgramHandler()
+	{
+		fHandler = new FrameHandler(null, null, null);
+	}
+	
 	public void startLoginScreen()
 	{
 		fHandler.frame = new LoginFrame(getFrameHandler(), this);
+		fHandler.frame.setVisible(true);
 	}
 	
 	public void connectToGame(String userName, String ip)
@@ -25,9 +34,18 @@ public class ProgramHandler {
 		game.addObserver(guiLink);
 	}
 	
-	public void createNewGame() throws IllegalAccessException
+	public void createNewGame(String userName) throws IllegalAccessException
 	{
+		try {
+			new GameServer();
+		} catch (IOException e) {
+			System.out.println("Kunde inte starta servern");
+			System.exit(-1);
+		}
+		gameClient = new GameClient(userName, "localhost");
+		fHandler.frame.setVisible(false);
 		fHandler.frame2 = new NewQuestionFrame(getGameClient(), getFrameHandler());
+		fHandler.frame2.setVisible(true);
 	}
 	
 	private FrameHandler getFrameHandler()

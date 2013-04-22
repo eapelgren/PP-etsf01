@@ -1,4 +1,4 @@
-package chat;
+package gui;
 
 import java.awt.BorderLayout;
 import java.awt.TextArea;
@@ -13,21 +13,23 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class chatWindow extends JFrame {
+public class ChatWindow extends JFrame {
 	private TextField tf = new TextField();
 	private TextArea ta = new TextArea();
 	private String msgToSend; 
 	
-	public chatWindow(){
+	public ChatWindow(){
 		JPanel content = new JPanel();
 		content.setLayout(new BorderLayout() );
 		content.add("North",tf);
 		content.add("Center",ta);
+		
 		tf.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				msgToWrite(e.getActionCommand());
 			}
 		} );
+		
 		setContentPane(content);
 		setTitle("Chat");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
@@ -35,13 +37,29 @@ public class chatWindow extends JFrame {
 		pack();
 	}
 	
-	private void msgToWrite(String msg)
+	private synchronized void msgToWrite(String msg)
 	{
-		msgToSend = msg; 
+		while(msgToSend != null)
+		{
+			try {
+				wait();
+			} catch (InterruptedException e) {
+			}
+		}
+		System.out.println("Sparar msg: " + msg);
+		msgToSend = msg;
+		notifyAll();
 	}
 	
-	public String GetMessageToSendToServer()
+	public synchronized String GetMessageToSendToServer()
 	{
+		while(msgToSend == null)
+		{
+			try {
+				wait();
+			} catch (InterruptedException e) {}
+		}
+		System.out.println("LŠmnar ut msg: " + msgToSend);
 		String msg = msgToSend; 
 		msgToSend = null;
 		return msg; 

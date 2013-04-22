@@ -1,5 +1,7 @@
 package chat;
 
+import gui.ChatWindow;
+
 import java.io.IOException;
 import java.net.UnknownHostException;
 
@@ -11,7 +13,7 @@ public class ChatProgram {
 		ChatClient client = new ChatClient(userName);
 		try {
 			client.connectToServer("localhost");
-			chatWindow window = new chatWindow();
+			ChatWindow window = new ChatWindow();
 			ChatWindowThread putMessagesInWindow = new ChatWindowThread(client, 
 					ChatWindowThread.WRITE_TO_WINDOW, window);
 			ChatWindowThread sendMessageToOtherClients = new ChatWindowThread(client, 

@@ -1,15 +1,15 @@
 package chat;
 
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.Socket;
 
 public class ChatServerThread extends Thread {
 	Socket connection;
 	ChatServer server;
-	BufferedOutputStream toClient;
+	OutputStream toClient;
 	BufferedReader fromClient;
 
 	public ChatServerThread(Socket connection, ChatServer server) {
@@ -19,7 +19,7 @@ public class ChatServerThread extends Thread {
 		try {
 			fromClient = new BufferedReader(new InputStreamReader(
 					connection.getInputStream()));
-			toClient = new BufferedOutputStream(connection.getOutputStream());
+			toClient = connection.getOutputStream();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -57,10 +57,11 @@ public class LoginPane extends JPanel {
 		btnSkapaNyttSpel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				frameHandler.frame.setVisible(false);
-				frameHandler.frame2.setVisible(true);
 				name = editorPaneName.getText();
-		
+				if(name != null && !name.equals(""))
+				{
+					createNewGame(name);
+				}
 			}
 		});
 		btnSkapaNyttSpel.setBounds(166, 175, 126, 23);
@@ -86,6 +87,16 @@ public class LoginPane extends JPanel {
 	private void continueProgram(String userName, String ip)
 	{
 		pHandler.connectToGame(userName, ip);
+	}
+	
+	private void createNewGame(String userName)
+	{
+		try {
+			pHandler.createNewGame(userName);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public boolean isConnected(){

@@ -1,14 +1,16 @@
 package chat;
 
+import gui.ChatWindow;
+
 public class ChatWindowThread extends Thread {
 	private ChatClient client;
 	private int funktion;
-	private chatWindow window;
+	private ChatWindow window;
 
 	public static int SEND_TO_SERVER=1; 
 	public static int WRITE_TO_WINDOW = 2; 
 	
-	public ChatWindowThread(ChatClient client, int funktion, chatWindow window){
+	public ChatWindowThread(ChatClient client, int funktion, ChatWindow window){
 		this.client = client;
 		this.funktion = funktion;
 		this.window = window; 
@@ -29,6 +31,7 @@ public class ChatWindowThread extends Thread {
 			String msg = window.GetMessageToSendToServer(); 
 			if(msg != null)
 			{
+				System.out.println("Skickar msg: " + msg);
 				client.sendMessage(msg);
 			}
 		}
