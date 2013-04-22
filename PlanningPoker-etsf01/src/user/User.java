@@ -1,6 +1,7 @@
 package user;
 
-import poker.Card_Interface;
+import poker.CardDeck;
+
 
 public class User implements User_Interface {
 	private String name;
@@ -19,11 +20,11 @@ public class User implements User_Interface {
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
-		return null;
+		return name;
 	}
 
 	@Override
-	public Card_Interface getChoosenCard() {
+	public CardDeck getChoosenCard() {
 		// TODO Auto-generated method stub
 		return null;
 	}
