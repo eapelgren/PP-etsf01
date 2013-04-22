@@ -1,6 +1,6 @@
 package poker;
 
-public class Card implements Card_Interface {
+public class Card {
 	private int value;
 	
 	public Card(int value){
@@ -12,9 +12,7 @@ public class Card implements Card_Interface {
 		this.value = Integer.parseInt(value);
 	}
 
-	@Override
 	public int getValue() {
-		// TODO Auto-generated method stub
 		return value;
 	}
 	

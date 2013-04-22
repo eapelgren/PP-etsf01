@@ -1,5 +1,5 @@
 package poker;
-public class CardDeck implements CardDeck_Interface {
+public class CardDeck {
 	
 	public Card[] card;
 	private Card chooseCard;
@@ -19,10 +19,7 @@ public class CardDeck implements CardDeck_Interface {
 		}
 	}
 	
-
-
-	@Override
-	public Card_Interface chooseCard(int nbr) {
+	public Card chooseCard(int nbr) {
 		// TODO Auto-generated method stub
 		for(int i=0; i<card.length;i++){
 			if(card[i].getValue()== nbr){
@@ -33,7 +30,7 @@ public class CardDeck implements CardDeck_Interface {
 		return null;
 	}
 	
-	public Card_Interface choosenCard(){
+	public Card choosenCard(){
 		return chooseCard;
 	}
 	

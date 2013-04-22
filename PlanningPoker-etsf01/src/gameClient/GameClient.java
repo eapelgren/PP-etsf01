@@ -41,18 +41,46 @@ public class GameClient {
 	//Description: description
 	public Question GetQuestionFromServer()
 	{
-		
-		return null;
+		Question question = null;
+		try {
+			String firstString = fromServer.readLine(); 
+			String secondString = fromServer.readLine();
+			if(firstString.startsWith("Question"))
+			{
+				firstString = firstString.substring("Question: ".length());
+			}
+			if(secondString.startsWith("Description"))
+			{
+				secondString = secondString.substring("Description: ".length());
+			}
+			question = new Question(firstString, secondString);
+				
+		} catch (IOException e) {
+			System.out.println("Problem med att ta emot fråga");
+		} 
+		return question;
 	}
 	
 	public String GetResultOnQusetion()
 	{
-		return "";
+		try {
+			String resultString = fromServer.readLine();
+			return resultString.substring("Answer: ".length());
+		} catch (IOException e) {
+			System.out.println("Problem med att ta emot resultat för seplad runda");
+			return null; 
+		} 
 	}
 	
 	public String GetAllQuestionsAndResults()
 	{
-		return "";
+		try {
+			String resultString = fromServer.readLine();
+			return resultString.substring("AllQuestions: ".length());
+		} catch (IOException e) {
+			System.out.println("Problem med att ta emot alla frågor och resultat");
+			return null; 
+		} 
 	}
 	
 	public void StartNewGame()

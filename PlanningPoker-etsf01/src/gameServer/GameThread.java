@@ -59,6 +59,7 @@ public class GameThread extends Thread {
 			sb.append(uCard.getUser().getName());
 			sb.append(" Valde kort ");
 			sb.append(uCard.getCard().getValue());
+			sb.append("\r\n");
 		}
 		try{
 			toClient.write(sb.toString().getBytes());
@@ -78,6 +79,7 @@ public class GameThread extends Thread {
 			sb.append(qp.getQuestion().getQuestion());
 			sb.append(" - ");
 			sb.append(qp.getCard().getValue());
+			sb.append("\r\n");
 		}
 		try{
 			toClient.write(sb.toString().getBytes());
