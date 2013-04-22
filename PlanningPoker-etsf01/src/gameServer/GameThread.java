@@ -33,6 +33,8 @@ public class GameThread extends Thread {
 		}
 	}
 	
+	//Question: question 
+	//Description: description
 	public void SendQuestion(Question question)
 	{
 		String questionCommand = "Question: " + question.getQuestion();

@@ -37,8 +37,11 @@ public class GameClient {
 		fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 	}
 	
+	//Question: question 
+	//Description: description
 	public Question GetQuestionFromServer()
 	{
+		
 		return null;
 	}
 	
