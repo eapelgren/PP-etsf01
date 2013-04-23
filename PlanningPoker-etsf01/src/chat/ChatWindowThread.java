@@ -28,7 +28,8 @@ public class ChatWindowThread extends Thread {
 	private void readFromChat(){
 		while(true)
 		{
-			String msg = window.GetMessageToSendToServer(); 
+			String msg = window.GetMessageToSendToServer();
+			window.resetWindow();
 			if(msg != null)
 			{
 				System.out.println("Skickar msg: " + msg);

@@ -50,6 +50,9 @@ public class ChatServerThread extends Thread {
 	}
 
 	public void sendMessageToClient(String message) {
+		if(!message.endsWith("\n")){
+			message = message + "\n";
+		}
 		try {
 			toClient.write(message.getBytes());
 			toClient.flush();

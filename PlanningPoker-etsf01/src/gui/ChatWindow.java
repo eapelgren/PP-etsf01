@@ -64,6 +64,9 @@ public class ChatWindow extends JFrame {
 		msgToSend = null;
 		return msg; 
 	}
+	public void resetWindow(){
+		ta.setText("");
+	}
 	
 	public void PutMessageInWindow(String message)
 	{
