@@ -11,6 +11,7 @@ public class ChatServerThread extends Thread {
 	ChatServer server;
 	OutputStream toClient;
 	BufferedReader fromClient;
+	char firstCharInString;
 
 	public ChatServerThread(Socket connection, ChatServer server) {
 		this.connection = connection;
@@ -27,7 +28,7 @@ public class ChatServerThread extends Thread {
 
 	public void run() {
 
-		while (true) {
+		while (IsAlive()) {
 			try {
 				String message = fromClient.readLine();
 				if (message != null) {
@@ -35,18 +36,39 @@ public class ChatServerThread extends Thread {
 				}
 				Thread.yield();
 			} catch (IOException e) {
-				e.printStackTrace();
 			}
 
 		}
+		killThread();
 	}
 
 	public void killThread() {
-		try {
-			this.join(1);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		try{
+			connection.close();
+			server.removeClientFromServer(this);
+		}catch(IOException e){
+			
 		}
+	}
+	
+	private boolean IsAlive(){
+		int a;
+		try {
+			a = connection.getInputStream().read();
+			if(a != -1){
+				firstCharInString = (char)a;
+				return true;
+			}
+			else{
+				return false;
+			}
+		} catch (IOException e) {
+			System.out.println("Problem checking if client is alive");
+			return false;
+		}
+		
+		
+		
 	}
 
 	public void sendMessageToClient(String message) {
@@ -57,7 +79,10 @@ public class ChatServerThread extends Thread {
 			toClient.write(message.getBytes());
 			toClient.flush();
 		} catch (IOException e) {
-			e.printStackTrace();
+			if(!IsAlive()){
+				killThread();
+				System.out.println("Client is disconnected");
+			}
 		}
 	}
 }

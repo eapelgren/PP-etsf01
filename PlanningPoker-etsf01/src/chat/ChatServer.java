@@ -40,7 +40,7 @@ public class ChatServer {
 	}
 
 	public void removeClientFromServer(ChatServerThread clientConnection) {
-		clientConnection.killThread();
+		
 		clientConnections.remove(clientConnection);
 	}
 
