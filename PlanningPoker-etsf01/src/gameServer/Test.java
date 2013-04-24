@@ -14,6 +14,7 @@ public class Test {
 		try {
 			GameServer gameServer = new GameServer();
 			gameServer.SetupGame();
+			System.out.println("hej");
 			gameServer.StartGame();
 			Card c = new Card (8);
 			
