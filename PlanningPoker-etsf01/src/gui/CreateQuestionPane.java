@@ -86,6 +86,8 @@ public class CreateQuestionPane extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 			gameClient.StartNewGame();
 			frameHandler.frame2.setVisible(false);
+			GameFrame gameFrame = new GameFrame();
+			frameHandler.setGameFrame(gameFrame);
 			frameHandler.frame3.setVisible(true);
 		
 			

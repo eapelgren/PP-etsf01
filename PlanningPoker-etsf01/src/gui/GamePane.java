@@ -22,6 +22,7 @@ public class GamePane extends JPanel {
 	private JLabel questionLabel;
 	private GameClient gameClient;
 	private ProgramHandler pHandler;
+	private JTextPane textPane;
 	/**
 	 * Create the panel.
 	 */
@@ -152,7 +153,7 @@ public class GamePane extends JPanel {
 		scrollPane.setBounds(31, 95, 214, 267);
 		add(scrollPane);
 		
-		JTextPane textPane = new JTextPane();
+		textPane = new JTextPane();
 		textPane.setEditable(false);
 		scrollPane.setViewportView(textPane);
 	
@@ -162,6 +163,6 @@ public class GamePane extends JPanel {
 	
 	public void loadQuestion(Question question){
 		questionLabel.setText(question.question);
-		questionDescriptionTF.setText(question.questionDescription);
+		textPane.setText(question.questionDescription);
 	}
 }

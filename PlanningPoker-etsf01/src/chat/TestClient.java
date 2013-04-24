@@ -11,7 +11,7 @@ public class TestClient {
 	 */
 	public static void main(String[] args) {
 		Scanner scan = new  Scanner (System.in);
-		String name = scan.next();
+		String name = "" + scan.next();
 		
 		new ChatProgram(name);
 		

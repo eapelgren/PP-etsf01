@@ -9,5 +9,13 @@ public class FrameHandler {
 		frame2 = question; 
 		frame3 = game; 
 	}
-	
+	public void setLoginFrame(LoginFrame frame){
+		this.frame = frame;
+	}
+	public void setNewQuestionFrame(NewQuestionFrame frame){
+		this.frame2 = frame;
+	}
+	public void setGameFrame(GameFrame frame){
+		this.frame3 = frame;
+	}
 }

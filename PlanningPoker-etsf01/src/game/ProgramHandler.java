@@ -61,5 +61,4 @@ public class ProgramHandler {
 			throw new IllegalAccessException("No game client started yet");
 		return gameClient;
 	}
-
 }
