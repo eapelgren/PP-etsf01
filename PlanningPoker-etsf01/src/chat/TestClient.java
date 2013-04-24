@@ -1,21 +1,22 @@
 package chat;
 
-import java.io.IOException;
-import java.net.UnknownHostException;
-import java.util.Scanner;
+import java.awt.*;
+import javax.swing.*;
+
+import java.awt.event.*;
 
 public class TestClient {
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		Scanner scan = new  Scanner (System.in);
-		String name = "" + scan.next();
+	private String name;
+	
+	public  TestClient(){
 		
+		this.name = JOptionPane.showInputDialog( "Select your user name!");
 		new ChatProgram(name);
-		
-		
+	}	
+	
+	
+	public static void main(String []args){
+		new TestClient();
 	}
-
 }
+
