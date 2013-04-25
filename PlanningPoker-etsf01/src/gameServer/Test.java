@@ -16,12 +16,26 @@ public class Test {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		GameServerThread gs = new GameServerThread();
-		gs.start();
-
-		String username = JOptionPane.showInputDialog("username");
-		String host = JOptionPane.showInputDialog("host");
-		GameClient gc = new GameClient(username, host);
+		GameServer gameServer;
+		try {
+			gameServer = new GameServer();
+			gameServer.SetupGame();
+			
+			/*telnet client test
+			telnet localhost:31345
+			command 'NewQuestion: Question : Description' //tested confirmed working
+			command 'ChoosenCard: User - CardValue' //tested confirmed working
+			command 'SetupGame' //tested confirmed working
+			command 'StartGame' //tested confirmed working, unsure about the returned results:
+			Doesn't poll the question since 'playersAggreed' is set to false in Row 77 in GameServer.java
+			
+			
+			
+			
+			*/
+		} catch (IOException e) {
+			System.out.println("Exception : " + e.getMessage());
+		}
 	}
 
 }

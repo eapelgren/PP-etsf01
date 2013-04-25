@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Queue;
 
 import poker.Card;
@@ -27,8 +28,13 @@ public class GameServer {
 	{
 		socket = new ServerSocket(GAME_SERVER_PORT);
 		gameClients = new ArrayList<GameThread>();
+		
+		//initsialisering av variabler - tillagd av omar
+		allGameQuestions = new ArrayList<QuestionPlayed>(); 
+		gameQuestions = new LinkedList<Question>();
+		playedCards = new ArrayList<UserCard>();
+		lastQuestion = new Question("No question", "No question");
 	}
-	
 	// Allows other users connect to the game
 	public void SetupGame()
 	{

@@ -45,7 +45,7 @@ public class GameThread extends Thread {
 			toClient.flush();
 		}catch(IOException ex)
 		{
-			System.out.println("Fårgan gick inte att skicka");
+			System.out.println("Frågan gick inte att skicka");
 		}
 	}
 	
@@ -107,10 +107,12 @@ public class GameThread extends Thread {
 	private void handleInputFromClient(String input)
 	{
 		String[] command = input.split(":");
-		if (command[0].equals("ChoosedCards")){
+
+		
+		if (command.length > 1 &&command[0].equals("ChoosedCards")){ //kontroll om andra argument i command existerar tillagd av Omar
 			choosenCard(command[1]);
-		}else if(command[1].equals("NewQuestion")){
-			newQuestion(command[1]);
+		}else if(command.length > 1 && command[0].equals("NewQuestion")){ //kontroll om andra argument i command existerar tillagd av Omar
+			newQuestion(command);
 		}else if(command[0].equals("StartGame")){
 			startGame();
 		}else if(command[0].equals("SetupGame")){
@@ -123,7 +125,8 @@ public class GameThread extends Thread {
 	// ChoosenCard: User - CardValue
 	private void choosenCard(String input)
 	{
-		String valuesGiven = input.substring("ChoosenCard: ".length());
+		//String valuesGiven = input.substring("ChoosenCard: ".length()); //varför dela upp argumentet input om den redan är? ->String[] command = input.split(":");
+		String valuesGiven = input; //tillagd av omar
 		String[] individualValues = valuesGiven.split(" - ");
 		Card playedCard = new Card(individualValues[1]);
 		User user = new User(individualValues[0]);
@@ -133,12 +136,13 @@ public class GameThread extends Thread {
 	}
 	
 	//NewQuestion: Question : Description
-	private void newQuestion(String input)
+	private void newQuestion(String[] input)
 	{
-		String valueGiven = input.substring("NewQuestion: ".length());
-		String[] iv = valueGiven.split(" : ");
+		//String valueGiven = input.substring("NewQuestion: ".length()); //varför dela upp argumentet input om den redan är? ->String[] command = input.split(":");
+		String[] valueGiven = input; //tillagd av omar
+		//String[] iv = valueGiven.split(" : ");
 		
-		server.AddNewQuestion(iv[0], iv[1]);
+		server.AddNewQuestion(valueGiven[1], valueGiven[2]);
 	}
 	
 	// StartGame
