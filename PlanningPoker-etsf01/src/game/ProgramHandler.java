@@ -10,7 +10,6 @@ import gui.NewQuestionFrame;
 public class ProgramHandler {
 	private FrameHandler fHandler;
 	private GameClient gameClient;
-	private ChatProgram chatProgram; 
 	private String uName;
 	
 	public ProgramHandler()
@@ -26,14 +25,14 @@ public class ProgramHandler {
 	
 	public void connectToGame(String userName, String ip)
 	{
-		GameClient game = new GameClient(userName, ip);
-		chatProgram = new ChatProgram(userName, ip);
-		fHandler.frame3 = new GameFrame(false, game);
+		gameClient = new GameClient(userName, ip);
+		new ChatProgram(userName, ip);
+		fHandler.frame3 = new GameFrame(false, gameClient);
 		fHandler.frame3.setVisible(true);
 		fHandler.frame.setVisible(false);
 		SystemToGuiHandler guiLink = new SystemToGuiHandler(fHandler.frame3);
 		
-		game.addObserver(guiLink);
+		gameClient.addObserver(guiLink);
 	}
 	
 	public void createNewGame(String userName) throws IllegalAccessException
@@ -42,13 +41,20 @@ public class ProgramHandler {
 		gameClient = new GameClient(userName, "localhost");
 		fHandler.frame.setVisible(false);
 		fHandler.frame2 = new NewQuestionFrame(getGameClient(), getFrameHandler(), this);
+		fHandler.frame3 = new GameFrame(true, gameClient);
 		fHandler.frame2.setVisible(true);
+		fHandler.frame3.setVisible(false);
 	}
 	
 	public void startModeratorGame() throws IllegalAccessException
 	{
-		getGameClient().StartNewGame();
-		connectToGame(uName, "localhost");
+		new ChatProgram(uName, "localhost");
+		
+		fHandler.frame3.setVisible(true);
+		fHandler.frame2.setVisible(false);
+		SystemToGuiHandler guiLink = new SystemToGuiHandler(fHandler.frame3);
+		
+		gameClient.addObserver(guiLink);
 	}
 	
 	private FrameHandler getFrameHandler()

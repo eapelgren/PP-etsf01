@@ -20,6 +20,7 @@ public class GameClient extends Observable {
 	private Question lastQuestion;
 	private String answerOnLastQuestion;
 	private String allQuestionsAndAnswers;
+	private boolean gameSetup;
 	
 	public GameClient(String userName, String connectToAddress)
 	{
@@ -78,18 +79,17 @@ public class GameClient extends Observable {
 	
 	public void StartNewGame()
 	{
-		try {
-			toServer.write("SGame \n".getBytes());
-			toServer.flush();
-		} catch (IOException e) {
-			System.out.println("Could not send command 'StartGame'");
-		}
+		sendSimpleCommand("StartGame");
 	}
 	
 	public void SetupGame()
 	{
+		sendSimpleCommand("SetupGame");
+	}
+
+	private void sendSimpleCommand(String command) {
 		try {
-			toServer.write("SetupGame \n".getBytes());
+			toServer.write((command + "\n").getBytes());
 			toServer.flush();
 		} catch (IOException e) {
 			System.out.println("Could not send command 'StartGame'");

@@ -24,7 +24,6 @@ public class GameClientThread extends Thread{
 				if (message != null) {
 					handleInputFromServer(message);
 				}
-				Thread.yield();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -36,7 +35,7 @@ public class GameClientThread extends Thread{
 		String[] command = input.split(":");
 		if (command[0].equals("AllQuestions")){
 			allQuestionsAndAnswersFromServer(input);
-		}else if(command[1].equals("Answer")){
+		}else if(command[0].equals("Answer")){
 			answerFromServer(input);
 		}else if(command[0].equals("Question")){
 			qusetionFromServer(input);

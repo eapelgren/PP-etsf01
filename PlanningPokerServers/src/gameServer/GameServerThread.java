@@ -19,10 +19,12 @@ public class GameServerThread extends Thread {
 	GameServer server;
 	BufferedOutputStream toClient;
 	BufferedReader fromClient;
+	Boolean readyToStartGame;
 	
 	public GameServerThread(Socket connection, GameServer server) {
 		this.connection = connection;
 		this.server = server;
+		readyToStartGame = false;
 
 		try {
 			fromClient = new BufferedReader(new InputStreamReader(
@@ -37,8 +39,8 @@ public class GameServerThread extends Thread {
 	//Description: description
 	public void SendQuestion(Question question)
 	{
-		String questionCommand = "Question: " + question.getQuestion();
-		String descriptionCommand = "Description: " + question.getDescription();
+		String questionCommand = "Question: " + question.getQuestion() + "\n";
+		String descriptionCommand = "Description: " + question.getDescription() + "\n";
 		try{
 			toClient.write(questionCommand.getBytes());
 			toClient.write(descriptionCommand.getBytes());
@@ -78,7 +80,10 @@ public class GameServerThread extends Thread {
 			sb.append("Result on the question: ");
 			sb.append(qp.getQuestion().getQuestion());
 			sb.append(" - ");
-			sb.append(qp.getCard().getValue());
+			if(qp.getCard() != null)
+			{
+				sb.append(qp.getCard().getValue());
+			}
 			sb.append("\r\n");
 		}
 		try{

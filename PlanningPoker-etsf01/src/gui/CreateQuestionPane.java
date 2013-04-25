@@ -22,7 +22,6 @@ public class CreateQuestionPane extends JPanel {
 		private JEditorPane editQuestion;
 		private JEditorPane editQuestionDescription;
 		private GameClient gameClient;
-		private FrameHandler frameHandler;
 		private JButton startGameBtn;
 		private ProgramHandler pHandler;
 	/**
@@ -30,7 +29,6 @@ public class CreateQuestionPane extends JPanel {
 	 */
 	public CreateQuestionPane(GameClient client, FrameHandler handler, ProgramHandler pHandler) {
 		setLayout(null);
-		this.frameHandler = handler;
 		this.pHandler = pHandler; 
 		this.gameClient = client;
 		editQuestion = new JEditorPane();
@@ -47,9 +45,9 @@ public class CreateQuestionPane extends JPanel {
 			public void mouseClicked(MouseEvent arg0) {
 				Question question = createQuestion();
 				gameClient.AddNewQuestion(question.question, question.questionDescription);
-				
 			}
 		});
+		
 		btnNyFrga.setBounds(60, 380, 126, 23);
 		add(btnNyFrga);
 		
@@ -59,10 +57,21 @@ public class CreateQuestionPane extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				Question question = createQuestion();
 				gameClient.AddNewQuestion(question.question, question.questionDescription);
-				gameClient.SetupGame();
 				startGameBtn.setEnabled(true);
 			}
 		});
+		
+		startGameBtn = new JButton("Starta Spel");
+		startGameBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				gameClient.StartNewGame();
+				startGame();
+			}
+		});
+		startGameBtn.setEnabled(false);
+		startGameBtn.setBounds(303, 414, 177, 23);
+		add(startGameBtn);
 		btnKlar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
@@ -82,18 +91,6 @@ public class CreateQuestionPane extends JPanel {
 		lblSkapaFrgor.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblSkapaFrgor.setBounds(60, 11, 126, 23);
 		add(lblSkapaFrgor);
-		
-		startGameBtn = new JButton("Starta Spel");
-		startGameBtn.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				startGame();
-			}
-		});
-		startGameBtn.setEnabled(false);
-		startGameBtn.setBounds(303, 414, 177, 23);
-		add(startGameBtn);
-
 	}
 	public Question createQuestion(){
 		
