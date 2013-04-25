@@ -1,5 +1,7 @@
 package gui;
 
+import gameClient.GameClient;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -23,7 +25,7 @@ public class GameFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public GameFrame(boolean isModerator) {
+	public GameFrame(boolean isModerator, GameClient client) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -35,7 +37,7 @@ public class GameFrame extends JFrame {
 		
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
-		gamePane = new GamePane(isModerator);
+		gamePane = new GamePane(isModerator, client);
 		resultPane = new ResultPane();
 		
 		

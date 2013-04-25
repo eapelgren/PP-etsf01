@@ -11,6 +11,7 @@ public class ProgramHandler {
 	private FrameHandler fHandler;
 	private GameClient gameClient;
 	private ChatProgram chatProgram; 
+	private String uName;
 	
 	public ProgramHandler()
 	{
@@ -27,7 +28,7 @@ public class ProgramHandler {
 	{
 		GameClient game = new GameClient(userName, ip);
 		chatProgram = new ChatProgram(userName, ip);
-		fHandler.frame3 = new GameFrame(false);
+		fHandler.frame3 = new GameFrame(false, game);
 		fHandler.frame3.setVisible(true);
 		fHandler.frame.setVisible(false);
 		SystemToGuiHandler guiLink = new SystemToGuiHandler(fHandler.frame3);
@@ -37,6 +38,7 @@ public class ProgramHandler {
 	
 	public void createNewGame(String userName) throws IllegalAccessException
 	{
+		uName = userName; 
 		gameClient = new GameClient(userName, "localhost");
 		chatProgram = new ChatProgram(userName, "localhost");
 		fHandler.frame.setVisible(false);
@@ -46,11 +48,7 @@ public class ProgramHandler {
 	
 	public void startModeratorGame()
 	{
-		gameClient.StartNewGame();
-		fHandler.frame2.setVisible(false);
-		GameFrame gameFrame = new GameFrame(true);
-		fHandler.setGameFrame(gameFrame);
-		fHandler.frame3.setVisible(true);
+		connectToGame(uName, "localhost");
 	}
 	
 	private FrameHandler getFrameHandler()

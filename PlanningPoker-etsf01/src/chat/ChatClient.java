@@ -21,7 +21,7 @@ public class ChatClient {
 	
 	public void connectToServer(String ipAddress) throws UnknownHostException, IOException
 	{
-		socket = new Socket(ipAddress, ChatServer.CHAT_SERVER_PORT);
+		socket = new Socket(ipAddress, 31346);
 		outStream = socket.getOutputStream();
 		inStream = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 	}

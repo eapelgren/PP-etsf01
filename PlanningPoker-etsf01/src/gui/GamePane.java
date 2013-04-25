@@ -28,10 +28,8 @@ public class GamePane extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public GamePane(boolean isModerator) {
-		
-		
-		
+	public GamePane(boolean isModerator, GameClient client) {
+		gameClient = client; 
 		setLayout(null);
 		
 		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("Planning Poker");

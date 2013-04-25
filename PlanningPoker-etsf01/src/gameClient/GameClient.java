@@ -11,7 +11,6 @@ import java.util.Observable;
 import poker.Card;
 import poker.Question;
 
-import chat.ChatServer;
 
 public class GameClient extends Observable {
 	private String userName;
@@ -38,7 +37,7 @@ public class GameClient extends Observable {
 	
 	private void connectToServer(String ipAddress) throws UnknownHostException, IOException
 	{
-		socket = new Socket(ipAddress, ChatServer.CHAT_SERVER_PORT);
+		socket = new Socket(ipAddress, 31345);
 		toServer = socket.getOutputStream();
 		fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 	}
