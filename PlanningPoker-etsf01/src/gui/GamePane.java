@@ -175,8 +175,8 @@ public class GamePane extends JPanel {
 	}
 	
 public void setResultOfLastQuestion(String result){
-		
-		resultOfQuestion.setText(result);
+		String currentText = resultOfQuestion.getText();
+		resultOfQuestion.setText( currentText + result);
 	}
 	
 	
