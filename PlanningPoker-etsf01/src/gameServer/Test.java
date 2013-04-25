@@ -25,8 +25,9 @@ public class Test {
 			telnet localhost:31345
 			command 'NewQuestion: Question : Description' //tested confirmed working
 			command 'ChoosedCards: User - 0' //tested confirmed working
-			command 'SetupGame' //tested confirmed working
 			command 'StartGame' //tested confirmed working
+			command 'SetupGame' //tested confirmed working
+			
 			
 
 			*/
