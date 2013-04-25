@@ -47,10 +47,10 @@ public class ProgramHandler {
 	public void startModeratorGame()
 	{
 		gameClient.StartNewGame();
-		frameHandler.frame2.setVisible(false);
-		GameFrame gameFrame = new GameFrame();
-		frameHandler.setGameFrame(gameFrame);
-		frameHandler.frame3.setVisible(true);
+		fHandler.frame2.setVisible(false);
+		GameFrame gameFrame = new GameFrame(true);
+		fHandler.setGameFrame(gameFrame);
+		fHandler.frame3.setVisible(true);
 	}
 	
 	private FrameHandler getFrameHandler()

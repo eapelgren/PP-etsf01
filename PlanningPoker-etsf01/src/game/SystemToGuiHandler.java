@@ -31,7 +31,7 @@ public class SystemToGuiHandler implements Observer {
 			String result = (String)arg1; 
 			if(result.startsWith("Player"))
 			{
-				resultView.setResultOfLastQuestion(result);
+				questionView.setResultOfLastQuestion(result);
 			}else if(result.startsWith("Result"))
 			{
 				resultView.setResultOfGameSoFar(result);
