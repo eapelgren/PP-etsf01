@@ -1,18 +1,10 @@
 package game;
 
-import java.io.IOException;
-import java.net.UnknownHostException;
-
-import chat.ChatClient;
 import chat.ChatProgram;
-import chat.ChatServer;
-
 import gameClient.GameClient;
-import gameServer.GameServer;
 import gui.FrameHandler;
 import gui.GameFrame;
 import gui.LoginFrame;
-import gui.LoginPane;
 import gui.NewQuestionFrame;
 
 public class ProgramHandler {
@@ -45,13 +37,6 @@ public class ProgramHandler {
 	
 	public void createNewGame(String userName) throws IllegalAccessException
 	{
-		try {
-			new GameServer();
-			new ChatServer();
-		} catch (IOException e) {
-			System.out.println("Kunde inte starta servern");
-			System.exit(-1);
-		}
 		gameClient = new GameClient(userName, "localhost");
 		chatProgram = new ChatProgram(userName, "localhost");
 		fHandler.frame.setVisible(false);
