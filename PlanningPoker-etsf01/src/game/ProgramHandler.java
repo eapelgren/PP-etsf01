@@ -40,14 +40,14 @@ public class ProgramHandler {
 	{
 		uName = userName; 
 		gameClient = new GameClient(userName, "localhost");
-		chatProgram = new ChatProgram(userName, "localhost");
 		fHandler.frame.setVisible(false);
-		fHandler.frame2 = new NewQuestionFrame(getGameClient(), getFrameHandler());
+		fHandler.frame2 = new NewQuestionFrame(getGameClient(), getFrameHandler(), this);
 		fHandler.frame2.setVisible(true);
 	}
 	
-	public void startModeratorGame()
+	public void startModeratorGame() throws IllegalAccessException
 	{
+		getGameClient().StartNewGame();
 		connectToGame(uName, "localhost");
 	}
 	

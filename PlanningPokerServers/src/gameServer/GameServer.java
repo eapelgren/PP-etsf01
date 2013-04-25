@@ -34,6 +34,7 @@ public class GameServer {
 		lastQuestion = new Question("No question", "No question");
 		
 		System.out.println("Game server started");
+		SetupGame();
 	}
 	
 	// Allows other users connect to the game
@@ -132,7 +133,7 @@ public class GameServer {
 	{
 		Question newQuestion = new Question(question, description);
 		allGameQuestions.add(new QuestionPlayed(newQuestion));
-		gameQuestions.offer(newQuestion);
+		gameQuestions.add(newQuestion);
 	}
 	
 }

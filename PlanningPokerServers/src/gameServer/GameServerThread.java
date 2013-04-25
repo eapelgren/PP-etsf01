@@ -107,17 +107,17 @@ public class GameServerThread extends Thread {
 	{
 		String[] command = input.split(":");
 		System.out.println("GameThread.java: Incoming command: " +command[0]);
-		
-		if (command.length > 1){
-			if(command[0].equals("ChoosedCards")){
+		if(command.length > 0)
+		{
+			if(command[0].equals("ChoosenCard")){
 				choosenCard(command[1]);		
 			}else if(command[0].equals("NewQuestion")){
 				newQuestion(command[1] + " : " + command[2]);	
-			}else if(command[0].equals("StartGame")){
+			}else if(command[0].trim().equals("StartGame")){
 				startGame();
-			}else if(command[0].equals("SetupGame")){
+			}else if(command[0].trim().equals("SetupGame")){
 				setupGame();
-			}else if(command[0].equals("ContinueGame")){
+			}else if(command[0].trim().equals("ContinueGame")){
 				continueGame();
 			} else {
 				System.out.println("GameServerThread.java: Command not recognized");
@@ -129,7 +129,7 @@ public class GameServerThread extends Thread {
 	private void choosenCard(String input)
 	{
 		String[] individualValues = input.split(" - ");
-		Card playedCard = new Card(individualValues[1]);
+		Card playedCard = new Card(individualValues[1].trim());
 		User user = new User(individualValues[0]);
 		UserCard card = new UserCard(playedCard, user);
 		
@@ -141,7 +141,7 @@ public class GameServerThread extends Thread {
 	{
 		String[] values = input.split(" : ");
 		
-		server.AddNewQuestion(values[1], values[2]);
+		server.AddNewQuestion(values[0], values[1]);
 	}
 	
 	// StartGame

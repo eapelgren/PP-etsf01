@@ -1,5 +1,6 @@
 package gui;
 
+import game.ProgramHandler;
 import gameClient.GameClient;
 
 import javax.swing.JPanel;
@@ -23,12 +24,14 @@ public class CreateQuestionPane extends JPanel {
 		private GameClient gameClient;
 		private FrameHandler frameHandler;
 		private JButton startGameBtn;
+		private ProgramHandler pHandler;
 	/**
 	 * Create the panel.
 	 */
-	public CreateQuestionPane(GameClient client, FrameHandler handler) {
+	public CreateQuestionPane(GameClient client, FrameHandler handler, ProgramHandler pHandler) {
 		setLayout(null);
 		this.frameHandler = handler;
+		this.pHandler = pHandler; 
 		this.gameClient = client;
 		editQuestion = new JEditorPane();
 		editQuestion.setBounds(60, 135, 166, 199);
@@ -84,9 +87,7 @@ public class CreateQuestionPane extends JPanel {
 		startGameBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-			
-		
-			
+				startGame();
 			}
 		});
 		startGameBtn.setEnabled(false);
@@ -101,4 +102,14 @@ public class CreateQuestionPane extends JPanel {
 		editQuestionDescription.setText("");
 		return returnQuestion;
 		}
+	
+	private void startGame()
+	{
+		try {
+			pHandler.startModeratorGame();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

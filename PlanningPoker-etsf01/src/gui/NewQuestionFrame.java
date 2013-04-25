@@ -1,5 +1,6 @@
 package gui;
 
+import game.ProgramHandler;
 import gameClient.GameClient;
 
 import java.awt.BorderLayout;
@@ -16,27 +17,11 @@ public class NewQuestionFrame extends JFrame {
 	private JTabbedPane tabbedPane;
 	
 	public CreateQuestionPane cqp;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					NewQuestionFrame frame = new NewQuestionFrame(null, null);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	/**
 	 * Create the frame.
 	 */
-	public NewQuestionFrame(GameClient client, FrameHandler handler) {
+	public NewQuestionFrame(GameClient client, FrameHandler handler, ProgramHandler pHandler) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -48,7 +33,7 @@ public class NewQuestionFrame extends JFrame {
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
 		
-		cqp = new CreateQuestionPane(client, handler);
+		cqp = new CreateQuestionPane(client, handler, pHandler);
 		tabbedPane.addTab("CreateQuestionPane", null, cqp, "CreateQuestionPane");
 		
 	}
