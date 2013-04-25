@@ -27,7 +27,7 @@ public class ProgramHandler {
 	{
 		GameClient game = new GameClient(userName, ip);
 		chatProgram = new ChatProgram(userName, ip);
-		fHandler.frame3 = new GameFrame();
+		fHandler.frame3 = new GameFrame(false);
 		fHandler.frame3.setVisible(true);
 		fHandler.frame.setVisible(false);
 		SystemToGuiHandler guiLink = new SystemToGuiHandler(fHandler.frame3);
@@ -42,6 +42,11 @@ public class ProgramHandler {
 		fHandler.frame.setVisible(false);
 		fHandler.frame2 = new NewQuestionFrame(getGameClient(), getFrameHandler());
 		fHandler.frame2.setVisible(true);
+	}
+	
+	public void startModeratorGame()
+	{
+		
 	}
 	
 	private FrameHandler getFrameHandler()
