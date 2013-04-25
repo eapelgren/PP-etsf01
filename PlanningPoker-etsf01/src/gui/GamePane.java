@@ -161,18 +161,19 @@ public class GamePane extends JPanel {
 		
 		if(isModerator){
 		 nextRound = new JButton("Play next round");
-		}
-		nextRound.addMouseListener(new MouseAdapter() {
-			@Override
-			
-			public void mouseClicked(MouseEvent arg0) {
-				gameClient.PlayNextQuestion();
-					
+		 nextRound.addMouseListener(new MouseAdapter() {
+				@Override
 				
-			}
-		});
-		nextRound.setBounds(316, 411, 109, 23);
-		add(nextRound);
+				public void mouseClicked(MouseEvent arg0) {
+					gameClient.PlayNextQuestion();
+						
+					
+				}
+			});
+			nextRound.setBounds(316, 411, 109, 23);
+			add(nextRound);
+		}
+		
 	}
 	
 public void setResultOfLastQuestion(String result){

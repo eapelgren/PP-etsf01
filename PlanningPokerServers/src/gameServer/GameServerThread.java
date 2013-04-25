@@ -97,7 +97,6 @@ public class GameServerThread extends Thread {
 				if (message != null) {
 					handleInputFromClient(message);
 				}
-				Thread.yield();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

@@ -80,7 +80,7 @@ public class GameClient extends Observable {
 	public void StartNewGame()
 	{
 		try {
-			toServer.write("StartGame".getBytes());
+			toServer.write("StartGame \n".getBytes());
 			toServer.flush();
 		} catch (IOException e) {
 			System.out.println("Could not send command 'StartGame'");
@@ -90,7 +90,7 @@ public class GameClient extends Observable {
 	public void SetupGame()
 	{
 		try {
-			toServer.write("SetupGame".getBytes());
+			toServer.write("SetupGame \n".getBytes());
 			toServer.flush();
 		} catch (IOException e) {
 			System.out.println("Could not send command 'StartGame'");
@@ -104,7 +104,7 @@ public class GameClient extends Observable {
 		sb.append(question);
 		sb.append(" : ");
 		sb.append(description);
-		
+		sb.append("\n");
 		try {
 			toServer.write(sb.toString().getBytes());
 			toServer.flush();
@@ -121,6 +121,7 @@ public class GameClient extends Observable {
 		sb.append(userName);
 		sb.append(" - ");
 		sb.append(card.getValue());
+		sb.append(" \n");
 		
 		try {
 			toServer.write(sb.toString().getBytes());
@@ -134,7 +135,7 @@ public class GameClient extends Observable {
 	public void PlayNextQuestion()
 	{
 		try {
-			toServer.write("ContinueGame".getBytes());
+			toServer.write("ContinueGame \n".getBytes());
 			toServer.flush();
 		} catch (IOException e) {
 			System.out.println("Could not send command 'StartGame'");
