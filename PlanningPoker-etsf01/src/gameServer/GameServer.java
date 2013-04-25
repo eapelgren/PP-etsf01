@@ -15,7 +15,7 @@ import poker.UserCard;
 public class GameServer {
 	
 	private ServerSocket socket;
-	private ArrayList<GameThread> gameClients;
+	private ArrayList<GameServerThread> gameClients;
 	private Queue<Question> gameQuestions; 
 	private ArrayList<QuestionPlayed> allGameQuestions; 
 	private boolean gameStarted; 
@@ -27,7 +27,7 @@ public class GameServer {
 	public GameServer() throws IOException
 	{
 		socket = new ServerSocket(GAME_SERVER_PORT);
-		gameClients = new ArrayList<GameThread>();
+		gameClients = new ArrayList<GameServerThread>();
 		
 		//initsialisering av variabler - tillagd av omar
 		allGameQuestions = new ArrayList<QuestionPlayed>(); 
@@ -35,13 +35,14 @@ public class GameServer {
 		playedCards = new ArrayList<UserCard>();
 		lastQuestion = new Question("No question", "No question");
 	}
+	
 	// Allows other users connect to the game
 	public void SetupGame()
 	{
 		while (!gameStarted) {
 			try {
 				Socket connection = socket.accept();
-				GameThread chatThread = new GameThread(connection,
+				GameServerThread chatThread = new GameServerThread(connection,
 						this);
 				gameClients.add(chatThread);
 				chatThread.start();
@@ -51,7 +52,7 @@ public class GameServer {
 		}
 	}
 	
-	// Starts the game
+	// Starts the game and gives the first question
 	public void StartGame()
 	{
 		gameStarted = true;
@@ -74,14 +75,15 @@ public class GameServer {
 	private void giveQuestion() {
 		if(playersAggreed)
 			lastQuestion = gameQuestions.poll();
-		for(GameThread player : gameClients)
+		for(GameServerThread player : gameClients)
 		{
 			player.SendQuestion(lastQuestion);
 		}
 	}
 	
+	// Ends teh game and sends the result of all the questions to all the players
 	public void EndGame(){
-		for(GameThread player : gameClients)
+		for(GameServerThread player : gameClients)
 		{
 			player.SendAllQuestionsWithResults();
 		}
@@ -99,7 +101,7 @@ public class GameServer {
 	
 	public void ReportResultOnQuestion()
 	{
-		for(GameThread player : gameClients)
+		for(GameServerThread player : gameClients)
 		{
 			player.SendResultOnQuestion(playedCards);
 		}
