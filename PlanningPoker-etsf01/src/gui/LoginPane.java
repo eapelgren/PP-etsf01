@@ -14,7 +14,6 @@ import java.awt.event.MouseEvent;
 
 
 public class LoginPane extends JPanel {
-	private FrameHandler frameHandler;
 	public String name;
 	public String ip;
 	private JEditorPane editorPaneName; 
@@ -24,9 +23,8 @@ public class LoginPane extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public LoginPane(FrameHandler handler, ProgramHandler pHandler) {
+	public LoginPane(ProgramHandler pHandler) {
 		setLayout(null);
-		this.frameHandler = handler;
 		this.pHandler = pHandler;
 		JLabel lblLogin = DefaultComponentFactory.getInstance().createLabel("Login");
 		lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -78,10 +76,7 @@ public class LoginPane extends JPanel {
 				continueProgram(name, ip);
 			}
 		}
-		});
-
-		
-		
+		});	
 	}
 	
 	private void continueProgram(String userName, String ip)
@@ -97,10 +92,5 @@ public class LoginPane extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-	
-	public boolean isConnected(){
-		return true;
-		
 	}
 }

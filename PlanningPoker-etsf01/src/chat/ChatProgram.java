@@ -8,11 +8,11 @@ import java.net.UnknownHostException;
 public class ChatProgram {
 	 
 	
-	public ChatProgram(String userName)
+	public ChatProgram(String userName, String host)
 	{
 		ChatClient client = new ChatClient(userName);
 		try {
-			client.connectToServer("localhost");
+			client.connectToServer(host);
 			ChatWindow window = new ChatWindow();
 			ChatWindowThread putMessagesInWindow = new ChatWindowThread(client, 
 					ChatWindowThread.WRITE_TO_WINDOW, window);

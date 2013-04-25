@@ -14,15 +14,9 @@ import javax.swing.border.EmptyBorder;
 
 public class LoginFrame extends JFrame implements ActionListener {
 
-	//private String test;
 	private JPanel contentPane;
 	private JTabbedPane tabbedPane;
-	//public GamePane gamePane;
-	//public ResultPane resultPane;
 	public LoginPane loginPane;
-	//public CreateQuestionPane cqp;
-
-
 
 	/**
 	 * Create the frame.
@@ -40,62 +34,19 @@ public class LoginFrame extends JFrame implements ActionListener {
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
 		
-		loginPane = new LoginPane(handler, pHandler);
-		
-		//gamePane = new GamePane();
-
-		//resultPane = new ResultPane();
-		
-		//cqp = new CreateQuestionPane();
-		
-
+		loginPane = new LoginPane(pHandler);
 		
 		tabbedPane.addTab("LoginPane", null, loginPane,
 				"LoginPane");
-		//tabbedPane.addTab("GamePane", null, gamePane,
-				
-		//		"GamePane");
-		//tabbedPane.addTab("ResultPane", null, resultPane,
-		//		"ResultPane");
-		
-		//tabbedPane.addTab("CreateQuestionPane", null, cqp, "CreateQuestionPane");
-		
 		tabbedPane.setSelectedIndex(0);
 	
 	}
-	
-	public static void main (String [] args){
-		EventQueue.invokeLater(new Runnable(){
-			public void run(){
-				try{
-					LoginFrame frame = new LoginFrame(null, null);
-					frame.setVisible(true);
-					
-				}catch (Exception e){
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-//	@Override
-	//public void actionPerformed(ActionEvent e) {
-	//	tabbedPane.removeTabAt(0);
-		
-	//	tabbedPane.addTab("GamePane", null, gamePane,
-				
-	//			"GamePane");
-	//	tabbedPane.addTab("ResultPane", null, resultPane,
-		//		"ResultPane");
-		
-	//}
-
-
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
+
 
 }

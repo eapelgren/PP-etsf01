@@ -11,7 +11,7 @@ public class TestClient {
 	public  TestClient(){
 		
 		this.name = JOptionPane.showInputDialog( "Select your user name!");
-		new ChatProgram(name);
+		new ChatProgram(name, "localhost");
 	}	
 	
 	

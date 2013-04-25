@@ -156,8 +156,6 @@ public class GamePane extends JPanel {
 		textPane = new JTextPane();
 		textPane.setEditable(false);
 		scrollPane.setViewportView(textPane);
-	
-
 	}
 	
 	
