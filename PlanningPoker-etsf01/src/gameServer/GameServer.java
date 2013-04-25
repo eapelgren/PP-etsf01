@@ -62,10 +62,8 @@ public class GameServer {
 	// if there is one, if not it ends the game
 	public void ContinueGame()
 	{
-		System.out.print("end game2");
 		if(!gameQuestions.isEmpty()){
 			giveQuestion();
-			System.out.print("end game2");
 		}
 		else {
 			System.out.print("end game");

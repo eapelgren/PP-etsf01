@@ -107,22 +107,24 @@ public class GameThread extends Thread {
 	private void handleInputFromClient(String input)
 	{
 		String[] command = input.split(":");
-
+		System.out.println("GameThread.java: Incoming command: " +command[0]);
 		
-		if (command.length > 1 &&command[0].equals("ChoosedCards")){ //kontroll om andra argument i command existerar tillagd av Omar
-			choosenCard(command[1]);
+		if (command.length > 1 && command[0].equals("ChoosedCards")){ //kontroll om andra argument i command existerar tillagd av Omar
+			choosenCard(command[1]);		
 		}else if(command.length > 1 && command[0].equals("NewQuestion")){ //kontroll om andra argument i command existerar tillagd av Omar
-			newQuestion(command);
+			newQuestion(command);	
 		}else if(command[0].equals("StartGame")){
 			startGame();
 		}else if(command[0].equals("SetupGame")){
 			setupGame();
 		}else if(command[0].equals("ContinueGame")){
 			continueGame();
+		} else {
+			System.out.println("GameThread.java: Command not recognized");
 		}
 	}
 	
-	// ChoosenCard: User - CardValue
+	// ChoosedCards: User - CardValue
 	private void choosenCard(String input)
 	{
 		//String valuesGiven = input.substring("ChoosenCard: ".length()); //varför dela upp argumentet input om den redan är? ->String[] command = input.split(":");

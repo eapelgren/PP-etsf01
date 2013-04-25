@@ -24,14 +24,11 @@ public class Test {
 			/*telnet client test
 			telnet localhost:31345
 			command 'NewQuestion: Question : Description' //tested confirmed working
-			command 'ChoosenCard: User - CardValue' //tested confirmed working
+			command 'ChoosedCards: User - 0' //tested confirmed working
 			command 'SetupGame' //tested confirmed working
-			command 'StartGame' //tested confirmed working, unsure about the returned results:
-			Doesn't poll the question since 'playersAggreed' is set to false in Row 77 in GameServer.java
+			command 'StartGame' //tested confirmed working
 			
-			
-			
-			
+
 			*/
 		} catch (IOException e) {
 			System.out.println("Exception : " + e.getMessage());
