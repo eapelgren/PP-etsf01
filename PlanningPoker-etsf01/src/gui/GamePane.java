@@ -23,10 +23,15 @@ public class GamePane extends JPanel {
 	private GameClient gameClient;
 	private ProgramHandler pHandler;
 	private JTextPane textPane;
+	private JTextPane resultOfQuestion;
+	private JButton nextRound;
 	/**
 	 * Create the panel.
 	 */
-	public GamePane() {
+	public GamePane(boolean isModerator) {
+		
+		
+		
 		setLayout(null);
 		
 		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("Planning Poker");
@@ -137,17 +142,9 @@ public class GamePane extends JPanel {
 		button_8.setBounds(246, 435, 49, 39);
 		add(button_8);
 		
-		JLabel lblNewJgoodiesLabel_2 = DefaultComponentFactory.getInstance().createLabel("Deltagare");
-		lblNewJgoodiesLabel_2.setBounds(333, 59, 92, 14);
+		JLabel lblNewJgoodiesLabel_2 = DefaultComponentFactory.getInstance().createLabel("Resultat p\u00E5 senaste fr\u00E5gan");
+		lblNewJgoodiesLabel_2.setBounds(287, 59, 138, 14);
 		add(lblNewJgoodiesLabel_2);
-		
-		JList list = new JList();
-		list.setBounds(333, 97, 124, 220);
-		add(list);
-		
-		JButton btnNewButton_1 = new JButton("Se resultat");
-		btnNewButton_1.setBounds(341, 351, 104, 23);
-		add(btnNewButton_1);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(31, 95, 214, 267);
@@ -156,7 +153,33 @@ public class GamePane extends JPanel {
 		textPane = new JTextPane();
 		textPane.setEditable(false);
 		scrollPane.setViewportView(textPane);
+		
+		resultOfQuestion = new JTextPane();
+		resultOfQuestion.setEditable(false);
+		resultOfQuestion.setBounds(287, 95, 158, 267);
+		add(resultOfQuestion);
+		
+		if(isModerator){
+		 nextRound = new JButton("Play next round");
+		}
+		nextRound.addMouseListener(new MouseAdapter() {
+			@Override
+			
+			public void mouseClicked(MouseEvent arg0) {
+				gameClient.PlayNextQuestion();
+					
+				
+			}
+		});
+		nextRound.setBounds(316, 411, 109, 23);
+		add(nextRound);
 	}
+	
+public void setResultOfLastQuestion(String result){
+		
+		resultOfQuestion.setText(result);
+	}
+	
 	
 	
 	public void loadQuestion(Question question){

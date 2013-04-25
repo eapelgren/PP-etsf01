@@ -37,28 +37,13 @@ public class ResultPane extends JPanel {
 		add(scrollPane);
 		
 		textResultPane = new JTextPane();
+		textResultPane.setEditable(false);
 		scrollPane.setViewportView(textResultPane);
-		
-		JButton btnResult = new JButton("Se Resultat");
-		btnResult.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			gameClient.getAllQuestionsAndAnswers();
-			
-			}
-		});
-		btnResult.setEnabled(false);
-		btnResult.setBounds(10, 419, 89, 23);
-		add(btnResult);
 	}
 	
-	public void setResultOfLastQuestion(String result)
-	{
-		
-	}
 	
-	public void setResultOfGameSoFar(String result)
-	{
+	public void setResultOfGameSoFar(String result){
+		textResultPane.setText(result);
 		
 	}
 }
