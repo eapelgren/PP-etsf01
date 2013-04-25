@@ -9,7 +9,7 @@ public class ChatServer {
 
 	private ServerSocket socket;
 	private ArrayList<ChatServerThread> clientConnections;
-	public static int CHAT_SERVER_PORT = 31345;
+	public static int CHAT_SERVER_PORT = 31346;
 
 	public ChatServer() throws IOException {
 		socket = new ServerSocket(CHAT_SERVER_PORT);

@@ -54,11 +54,11 @@ public class GameClient extends Observable {
 		return answerOnLastQuestion;
 	}
 	
-	
 	public Question getLastAskedQuestion()
 	{
 		return lastQuestion;
 	}
+	
 	public void setAnswerOnQuestion(String answer)
 	{
 		answerOnLastQuestion = answer;

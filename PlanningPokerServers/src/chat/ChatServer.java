@@ -5,20 +5,18 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
-public class ChatServer {
+public class ChatServer extends Thread{
 
 	private ServerSocket socket;
 	private ArrayList<ChatServerThread> clientConnections;
-	public static int CHAT_SERVER_PORT = 31345;
+	public static int CHAT_SERVER_PORT = 31346;
 
 	public ChatServer() throws IOException {
 		socket = new ServerSocket(CHAT_SERVER_PORT);
 		clientConnections = new ArrayList<ChatServerThread>();
-
-		runServer();
 	}
 
-	private void runServer() {
+	public void run() {
 		while (true) {
 			try {
 				System.out.println("Server startar");
@@ -33,14 +31,13 @@ public class ChatServer {
 		}
 	}
 
-	public void sendMessageToClients(String message) {
+	public synchronized void sendMessageToClients(String message) {
 		for (ChatServerThread t : clientConnections) {
 			t.sendMessageToClient(message);
 		}
 	}
 
-	public void removeClientFromServer(ChatServerThread clientConnection) {
-		
+	public synchronized void removeClientFromServer(ChatServerThread clientConnection) {
 		clientConnections.remove(clientConnection);
 	}
 

@@ -13,7 +13,7 @@ public class serverStartup {
 	public static void main(String[] args) {
 		try {
 			new GameServer();
-			new ChatServer();
+			new ChatServer().start();
 		} catch (IOException e) {
 			System.out.println("Servrar kunde inte startas");
 		}

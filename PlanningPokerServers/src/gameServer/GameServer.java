@@ -32,6 +32,8 @@ public class GameServer {
 		gameQuestions = new LinkedList<Question>();
 		playedCards = new ArrayList<UserCard>();
 		lastQuestion = new Question("No question", "No question");
+		
+		System.out.println("Server started");
 	}
 	
 	// Allows other users connect to the game
