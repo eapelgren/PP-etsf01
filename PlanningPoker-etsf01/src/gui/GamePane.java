@@ -36,7 +36,7 @@ public class GamePane extends JPanel {
 		lblNewJgoodiesLabel.setBounds(10, 11, 143, 25);
 		add(lblNewJgoodiesLabel);
 		
-		questionLabel = DefaultComponentFactory.getInstance().createLabel("Beskrvining av Fr\u00E5ga");
+		questionLabel = DefaultComponentFactory.getInstance().createLabel("Beskrvining of Question");
 		questionLabel.setBounds(54, 47, 154, 39);
 		add(questionLabel);
 		
@@ -140,7 +140,7 @@ public class GamePane extends JPanel {
 		button_8.setBounds(246, 435, 49, 39);
 		add(button_8);
 		
-		JLabel lblNewJgoodiesLabel_2 = DefaultComponentFactory.getInstance().createLabel("Resultat p\u00E5 senaste fr\u00E5gan");
+		JLabel lblNewJgoodiesLabel_2 = DefaultComponentFactory.getInstance().createLabel("Results of latest question");
 		lblNewJgoodiesLabel_2.setBounds(287, 59, 138, 14);
 		add(lblNewJgoodiesLabel_2);
 		

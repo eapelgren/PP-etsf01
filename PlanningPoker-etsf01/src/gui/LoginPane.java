@@ -39,7 +39,7 @@ public class LoginPane extends JPanel {
 		editorPaneIp.setBounds(101, 112, 154, 20);
 		add(editorPaneIp);
 		
-		JLabel lblNamn = DefaultComponentFactory.getInstance().createLabel("Namn");
+		JLabel lblNamn = DefaultComponentFactory.getInstance().createLabel("Name");
 		lblNamn.setBounds(10, 66, 92, 14);
 		add(lblNamn);
 		
@@ -51,7 +51,7 @@ public class LoginPane extends JPanel {
 		add(btnLogin);
 		btnLogin.setBounds(10, 175, 89, 23);
 		
-		JButton btnSkapaNyttSpel = new JButton("Skapa nytt spel");
+		JButton btnSkapaNyttSpel = new JButton("Create new game");
 		btnSkapaNyttSpel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

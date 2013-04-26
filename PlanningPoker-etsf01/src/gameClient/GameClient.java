@@ -30,7 +30,7 @@ public class GameClient extends Observable {
 			Thread reciverThread = new GameClientThread(fromServer, this);
 			reciverThread.start();
 		} catch (UnknownHostException e) {
-			System.out.println("Fel serveraddress");
+			System.out.println("Wrong server address");
 		} catch (IOException e) {
 			System.out.println("Exception when trying to connect to server");
 		}

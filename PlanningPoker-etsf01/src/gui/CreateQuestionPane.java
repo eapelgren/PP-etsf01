@@ -39,7 +39,7 @@ public class CreateQuestionPane extends JPanel {
 		editQuestionDescription.setBounds(303, 135, 166, 199);
 		add(editQuestionDescription);
 		
-		JButton btnNyFrga = new JButton("Spara/Ny fr\u00E5ga");
+		JButton btnNyFrga = new JButton("Save/New question");
 		btnNyFrga.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -51,7 +51,7 @@ public class CreateQuestionPane extends JPanel {
 		btnNyFrga.setBounds(60, 380, 126, 23);
 		add(btnNyFrga);
 		
-		JButton btnKlar = new JButton("Spara/\u00D6ppna Server");
+		JButton btnKlar = new JButton("Save/open Server");
 		btnKlar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -61,7 +61,7 @@ public class CreateQuestionPane extends JPanel {
 			}
 		});
 		
-		startGameBtn = new JButton("Starta Spel");
+		startGameBtn = new JButton("Start the Game");
 		startGameBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -79,15 +79,15 @@ public class CreateQuestionPane extends JPanel {
 		btnKlar.setBounds(303, 380, 177, 23);
 		add(btnKlar);
 		
-		JLabel lblSkrivInNy = new JLabel("Skriv in ny fr\u00E5ga");
+		JLabel lblSkrivInNy = new JLabel("Enter a new question");
 		lblSkrivInNy.setBounds(60, 88, 106, 23);
 		add(lblSkrivInNy);
 		
-		JLabel lblBeskrivningAvFrga = new JLabel("Beskrivning av fr\u00E5ga");
+		JLabel lblBeskrivningAvFrga = new JLabel("Description of question");
 		lblBeskrivningAvFrga.setBounds(303, 88, 117, 23);
 		add(lblBeskrivningAvFrga);
 		
-		JLabel lblSkapaFrgor = new JLabel("Skapa fr\u00E5ga");
+		JLabel lblSkapaFrgor = new JLabel("Create a question");
 		lblSkapaFrgor.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblSkapaFrgor.setBounds(60, 11, 126, 23);
 		add(lblSkapaFrgor);

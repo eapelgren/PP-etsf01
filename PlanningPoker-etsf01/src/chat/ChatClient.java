@@ -34,7 +34,7 @@ public class ChatClient {
 		}
 		String stringToSend = userName + ": " + message;
 		try {
-			System.out.println("Skickar meddelande till servern: " + stringToSend);
+			System.out.println("Sends the message to the server: " + stringToSend);
 			outStream.write(stringToSend.getBytes());
 			outStream.flush();
 		} catch (IOException e) {

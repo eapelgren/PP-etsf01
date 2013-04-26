@@ -46,7 +46,7 @@ public class ChatWindow extends JFrame {
 			} catch (InterruptedException e) {
 			}
 		}
-		System.out.println("Sparar msg: " + msg);
+		System.out.println("Send msg: " + msg);
 		msgToSend = msg;
 		notifyAll();
 	}
@@ -59,7 +59,7 @@ public class ChatWindow extends JFrame {
 				wait();
 			} catch (InterruptedException e) {}
 		}
-		System.out.println("LŠmnar ut msg: " + msgToSend);
+		System.out.println("Return msg: " + msgToSend);
 		String msg = msgToSend; 
 		msgToSend = null;
 		return msg; 

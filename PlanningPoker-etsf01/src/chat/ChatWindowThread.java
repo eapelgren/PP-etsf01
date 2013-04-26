@@ -22,7 +22,7 @@ public class ChatWindowThread extends Thread {
 		else if(funktion == WRITE_TO_WINDOW)
 			writeChat();
 		else 
-			System.out.println("Kommando inte igenkänt");
+			System.out.println("Command not recognized");
 	}
 	
 	private void readFromChat(){
@@ -32,7 +32,7 @@ public class ChatWindowThread extends Thread {
 			window.resetWindow();
 			if(msg != null)
 			{
-				System.out.println("Skickar msg: " + msg);
+				System.out.println("Send msg: " + msg);
 				client.sendMessage(msg);
 			}
 		}
