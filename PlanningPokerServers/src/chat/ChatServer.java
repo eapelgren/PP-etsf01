@@ -19,7 +19,7 @@ public class ChatServer extends Thread{
 	public void run() {
 		while (true) {
 			try {
-				System.out.println("Chat server startar");
+				System.out.println("Chat server starts");
 				Socket connection = socket.accept();
 				ChatServerThread chatThread = new ChatServerThread(connection,
 						this);

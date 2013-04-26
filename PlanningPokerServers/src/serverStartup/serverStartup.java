@@ -15,7 +15,7 @@ public class serverStartup {
 			new ChatServer().start();
 			new GameServer();
 		} catch (IOException e) {
-			System.out.println("Servrar kunde inte startas");
+			System.out.println("Servers could not be started");
 		}
 		
 	}

@@ -47,7 +47,7 @@ public class GameServerThread extends Thread {
 			toClient.flush();
 		}catch(IOException ex)
 		{
-			System.out.println("Frågan gick inte att skicka");
+			System.out.println("The question could not be sent");
 		}
 	}
 	
@@ -66,7 +66,7 @@ public class GameServerThread extends Thread {
 		try{
 			toClient.write(sb.toString().getBytes());
 		} catch( IOException ex){
-			System.out.println("Resultatet kan inte skickas");
+			System.out.println("The result can not be sent");
 		}
 	}
 	
@@ -89,7 +89,7 @@ public class GameServerThread extends Thread {
 		try{
 			toClient.write(sb.toString().getBytes());
 		} catch( IOException ex){
-			System.out.println("Hela resultatet kan inte skickas");
+			System.out.println("The whole results can not be sent");
 		}
 	}
 
