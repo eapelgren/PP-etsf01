@@ -21,6 +21,7 @@ public class GameClient extends Observable {
 	private String answerOnLastQuestion;
 	private String allQuestionsAndAnswers;
 	private boolean gameSetup;
+	public String choosenCard;
 	
 	public GameClient(String userName, String connectToAddress)
 	{
@@ -116,18 +117,24 @@ public class GameClient extends Observable {
 	
 	public void ChooseCard(Card card)
 	{
+		if(choosenCard.equals("notSelected")){
+			
 		StringBuilder sb = new StringBuilder();
 		sb.append("ChoosenCard: ");
 		sb.append(userName);
 		sb.append(" - ");
 		sb.append(card.getValue());
 		sb.append(" \n");
-		
+		choosenCard = String.valueOf(card.getValue());
 		try {
 			toServer.write(sb.toString().getBytes());
 			toServer.flush();
 		} catch (IOException e) {
 			System.out.println("Could not send choosen card o server");
+		}
+		}
+		else{
+			System.out.println("You have allready choosen "+choosenCard);
 		}
 		
 	}

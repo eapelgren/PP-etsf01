@@ -51,6 +51,7 @@ public class GameClientThread extends Thread{
 			{
 				description = description.substring("Description: ".length());
 				client.setNewQuestion(new Question(question, description));
+				client.choosenCard = "notSelected";
 			}
 		}catch(IOException ex){
 			System.out.println("Error when reciving the description");
